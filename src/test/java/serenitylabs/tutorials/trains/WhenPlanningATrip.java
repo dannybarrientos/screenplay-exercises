@@ -29,9 +29,9 @@ public class WhenPlanningATrip {
     @Before
     public void setUp() {
         vikrant = Actor.named("Vikrant Dheer");
-        System.setProperty("webdriver.gecko.driver", "D:\\Vikrant\\Softwares\\Drivers\\MozillaDriver\\geckodriver.exe");
-        browser = new FirefoxDriver();
-        browser.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//        System.setProperty("webdriver.gecko.driver", "D:\\Vikrant\\Softwares\\Drivers\\MozillaDriver\\geckodriver.exe");
+//        browser = new FirefoxDriver();
+//        browser.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         vikrant.can(BrowseTheWeb.with(browser));
     }
 
