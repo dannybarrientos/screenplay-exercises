@@ -17,6 +17,8 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import serenitylabs.tutorials.trains.ui.JourneyForm;
+import serenitylabs.tutorials.trains.ui.JourneySummary;
 
 /**
  * Created by vdheer on 9/19/2016.
@@ -35,9 +37,9 @@ public class ViewTheAvailableTickets implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Enter.theValue(departureStation).into(By.id("depart-from")).thenHit(Keys.TAB),
-                Enter.theValue(destinationStation).into(By.id("going-to")).thenHit(Keys.TAB),
-                Click.on(By.className("planner__submit"))
+                Enter.theValue(departureStation).into(JourneyForm.ORIGIN).thenHit(Keys.TAB),
+                Enter.theValue(destinationStation).into(JourneyForm.DESTINATION).thenHit(Keys.TAB),
+                Click.on(JourneyForm.BUY_TICKETS)
         );
     }
 
