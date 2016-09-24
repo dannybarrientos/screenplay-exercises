@@ -3,9 +3,11 @@ package serenitylabs.tutorials.trains.tasks;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Step;
 import serenitylabs.tutorials.trains.ui.MainMenu;
+import serenitylabs.tutorials.trains.ui.TicketTypeForm;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 

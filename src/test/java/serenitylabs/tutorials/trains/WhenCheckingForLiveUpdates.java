@@ -18,6 +18,7 @@ import static net.serenitybdd.screenplay.EventualConsequence.eventually;
 import static net.serenitybdd.screenplay.GivenWhenThen.*;
 import static net.serenitybdd.screenplay.questions.AggregateQuestions.theTotalNumberOf;
 import static org.hamcrest.Matchers.equalTo;
+
 @RunWith(SerenityRunner.class)
 public class WhenCheckingForLiveUpdates {
 
@@ -52,6 +53,49 @@ public class WhenCheckingForLiveUpdates {
 
     @Test
     public void general_updates_should_be_available() {
-        // TODO
+        givenThat(tracy).has(ChosenTo.checkTheLiveUpdates());
+
+        when(tracy).attemptsTo(ViewTheLiveUpdates.forGeneralUpdates());
+
+        int generalUpdateCount = Text.of(LiveUpdates.GENERAL_UPDATE_BADGE).viewedBy(tracy).asInteger();
+
+        then(tracy).should(
+                eventually(
+                        seeThat(
+                                theTotalNumberOf(LiveUpdateIncidents.forGeneralUpdates()),
+                                equalTo(generalUpdateCount))
+                ));
+    }
+
+    @Test
+    public void train_cancellation_updates_should_be_available() {
+        givenThat(tracy).has(ChosenTo.checkTheLiveUpdates());
+        when(tracy).attemptsTo(ViewTheLiveUpdates.forTrainCancellations());
+
+        int trainCancellationCount = Text.of(LiveUpdates.TRAIN_CANCELLATION_BADGE).viewedBy(tracy).asInteger();
+
+        then(tracy).should(
+                eventually(
+                        seeThat(
+                                theTotalNumberOf(LiveUpdateIncidents.forTrainCancellations()),
+                                equalTo(trainCancellationCount))));
+    }
+
+    @Test
+    public void station_updates_should_be_able() {
+        givenThat(tracy).has(ChosenTo.checkTheLiveUpdates());
+
+        int stationUpdatesCount = Text.of(LiveUpdates.STATION_UPDATES_BADGE).viewedBy(tracy).asInteger();
+
+        when(tracy).attemptsTo(ViewTheLiveUpdates.forStationUpdates());
+
+        then(tracy).should(
+                eventually(
+                        seeThat(
+                                theTotalNumberOf(LiveUpdateIncidents.forStationUpdates()),
+                                equalTo(stationUpdatesCount)
+                        )
+                )
+        );
     }
 }
